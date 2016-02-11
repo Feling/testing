@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="main.java.table.Item" table="ITEM">
+  <id column="ITEM_ID" name="Itemid" type="int">
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="name">
+   <column name="NAME"/>
+  </property>
+  <property name="description"/>
+  <many-to-one class="main.java.table.User" fetch="select" name="user">
+   <column name="ID" not-null="true"/>
+  </many-to-one>
+ </class>
+</hibernate-mapping>

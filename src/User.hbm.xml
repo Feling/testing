@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="main.java.table.User" table="USER">
+  <id column="ID" name="id" type="int">
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="username">
+   <column name="USERNAME"/>
+  </property>
+  <property generated="never" lazy="false" name="password">
+   <column name="PASSWORD"/>
+  </property>
+  <set cascade="all" fetch="select" inverse="true" name="items"
+   sort="unsorted" table="ITEM">
+   <key>
+    <column name="ID" not-null="true"/>
+   </key>
+   <one-to-many class="main.java.table.Item"/>
+  </set>
+ </class>
+</hibernate-mapping>
